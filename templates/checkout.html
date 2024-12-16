@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Checkout</h2>
+    <p class="text-center">Please provide your contact information for delivery.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_address" class="form-label">Address</label>
+            <textarea id="id_address" name="address" class="form-control" rows="2" placeholder="Your address" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="id_phone_number" class="form-label">Phone Number</label>
+            <input type="text" id="id_phone_number" name="phone_number" class="form-control" placeholder="+1234567890" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Place Order</button>
+    </form>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'cart_view' %}" class="btn btn-outline-secondary">Back to Cart</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Список товаров{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">Цена: {{ product.price }} BYN</p>
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-outline-warning">Добавить в корзину</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<a href="{% url 'cart_view' %}" class="btn btn-outline-success">Перейти в корзину</a>
+{% endblock %}

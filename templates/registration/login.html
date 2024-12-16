@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Log In{% endblock title %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <form method="post" class="mt-4 border rounded-3 shadow p-4" style="max-width: 400px; width: 100%;">
+            {% csrf_token %}
+            <h1 class="h3 mb-4 text-center">Login</h1>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username <i class="fas fa-user text-muted ms-2"></i></label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password <i class="fas fa-lock text-muted ms-2"></i></label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-outline-primary w-100 rounded-pill">Login</button>
+            <div class="text-center mt-3">
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+                <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+
